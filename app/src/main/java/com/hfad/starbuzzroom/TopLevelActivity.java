@@ -1,7 +1,8 @@
 package com.hfad.starbuzzroom;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class TopLevelActivity extends AppCompatActivity {
 
