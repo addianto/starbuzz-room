@@ -13,8 +13,11 @@ public class Drink {
     private String description;
     private int imageResourceId;
 
-    public Drink(int id) {
+    public Drink(int id, String name, String description, int imageResourceId) {
         this.id = id;
+        this.name = name;
+        this.description = description;
+        this.imageResourceId = imageResourceId;
     }
 
     public int getId() {
