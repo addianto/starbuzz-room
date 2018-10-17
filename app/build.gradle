@@ -24,6 +24,8 @@ android {
 
 dependencies {
     def lifecycle_version = "2.0.0"
+    def room_version = "2.0.0"
+
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     // Refactored package names to use the new Android Jetpack (androidx)
     // package naming scheme
@@ -35,5 +37,10 @@ dependencies {
     // Architecture Components dependencies
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+
+    // Room persistence library
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
     testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
+    testImplementation "androidx.room:room-testing:$room_version"
 }
