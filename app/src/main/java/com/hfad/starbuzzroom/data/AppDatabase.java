@@ -3,6 +3,8 @@ package com.hfad.starbuzzroom.data;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import com.hfad.starbuzzroom.R;
+
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
@@ -49,9 +51,13 @@ public abstract class AppDatabase extends RoomDatabase {
         private static final int NEW = 0;
 
         private static final Drink[] SEED_DATA = new Drink[]{
-                new Drink(NEW, "Latte", "Espresso and steamed milk", 1),
-                new Drink(NEW, "Cappucinno", "Espresso, hot milk and steamed-milk foam", 2),
-                new Drink(NEW, "Filter", "Our best drip coffee", 3)
+                new Drink(NEW, "Latte", "Espresso and steamed milk",
+                        R.drawable.latte),
+                new Drink(NEW, "Cappucinno",
+                        "Espresso, hot milk and steamed-milk foam",
+                        R.drawable.cappuccino),
+                new Drink(NEW, "Filter", "Our best drip coffee",
+                        R.drawable.filter)
         };
 
         @Override
