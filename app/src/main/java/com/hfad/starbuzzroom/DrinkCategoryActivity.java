@@ -1,7 +1,19 @@
 package com.hfad.starbuzzroom;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+
+import com.hfad.starbuzzroom.data.AppDatabase;
+import com.hfad.starbuzzroom.data.Drink;
+import com.hfad.starbuzzroom.data.DrinkDao;
+
+import java.util.List;
 
 public class DrinkCategoryActivity extends AppCompatActivity {
 
@@ -9,5 +21,37 @@ public class DrinkCategoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drink_category);
+
+        ListView listDrinks = findViewById(R.id.list_drinks);
+        new SetAdapterTask(listDrinks).execute(this);
+    }
+
+    private class SetAdapterTask extends AsyncTask<Context, Void, ListAdapter> {
+
+        private ListView listView;
+
+        public SetAdapterTask(ListView listView) {
+            this.listView = listView;
+        }
+
+        @Override
+        protected ListAdapter doInBackground(Context... contexts) {
+            Context context = contexts[0];
+            AppDatabase db = AppDatabase.getInstance(context);
+            DrinkDao dao = db.drinkDao();
+            List<Drink> drinks = dao.getDrinks();
+
+            return new ArrayAdapter<>(
+                    context,
+                    android.R.layout.simple_list_item_1,
+                    drinks
+            );
+        }
+
+        @Override
+        protected void onPostExecute(ListAdapter adapter) {
+            listView.setAdapter(adapter);
+            super.onPostExecute(adapter);
+        }
     }
 }
