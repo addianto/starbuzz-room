@@ -8,7 +8,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -25,15 +25,15 @@ android {
 dependencies {
     def lifecycle_version = "2.0.0"
     def room_version = "2.0.0"
+    def test_version = "1.0.0-beta02"
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+
     // Refactored package names to use the new Android Jetpack (androidx)
     // package naming scheme
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-beta02'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-beta02'
+
     // Architecture Components dependencies
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
@@ -43,4 +43,11 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
     testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
     testImplementation "androidx.room:room-testing:$room_version"
+
+    // Test library
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-beta02'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-beta02'
+    androidTestImplementation "androidx.test:core:$test_version"
+    androidTestImplementation "androidx.test.ext:junit:$test_version"
 }
