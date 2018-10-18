@@ -41,7 +41,7 @@ public abstract class AppDatabase extends RoomDatabase {
             public void onCreate(SupportSQLiteDatabase db) {
                 super.onCreate(db);
                 // TODO Refactor AsyncTask to use WorkManager?
-                new SeedDatabaseTask().doInBackground(context);
+                new SeedDatabaseTask().execute(context);
             }
         }).build();
     }
