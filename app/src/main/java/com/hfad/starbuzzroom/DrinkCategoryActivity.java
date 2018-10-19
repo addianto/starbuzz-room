@@ -3,6 +3,7 @@ package com.hfad.starbuzzroom;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -24,6 +25,13 @@ public class DrinkCategoryActivity extends AppCompatActivity {
 
         ListView listDrinks = findViewById(R.id.list_drinks);
         new SetAdapterTask(listDrinks).execute(this);
+        listDrinks.setOnItemClickListener((parent, view, position, id) -> {
+            int selectedId = (int) parent.getSelectedItemId();
+            Intent intent = new Intent(DrinkCategoryActivity.this,
+                    DrinkActivity.class);
+            intent.putExtra(DrinkActivity.EXTRA_DRINKID, selectedId);
+            startActivity(intent);
+        });
     }
 
     private class SetAdapterTask extends AsyncTask<Context, Void, ListAdapter> {
