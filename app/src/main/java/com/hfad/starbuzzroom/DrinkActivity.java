@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class DrinkActivity extends AppCompatActivity {
 
+    private static final String TAG = DrinkActivity.class.getName();
     public static final String EXTRA_DRINKID = "drinkId";
 
     @Override

@@ -24,14 +24,13 @@ public class DrinkCategoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_drink_category);
 
         ListView listDrinks = findViewById(R.id.list_drinks);
-        new SetAdapterTask(listDrinks).execute(this);
-        listDrinks.setOnItemClickListener((parent, view, position, id) -> {
-            int selectedId = (int) parent.getSelectedItemId();
+         listDrinks.setOnItemClickListener((parent, view, position, id) -> {
             Intent intent = new Intent(DrinkCategoryActivity.this,
                     DrinkActivity.class);
-            intent.putExtra(DrinkActivity.EXTRA_DRINKID, selectedId);
+            intent.putExtra(DrinkActivity.EXTRA_DRINKID, position + 1);
             startActivity(intent);
         });
+        new SetAdapterTask(listDrinks).execute(this);
     }
 
     private class SetAdapterTask extends AsyncTask<Context, Void, ListAdapter> {
